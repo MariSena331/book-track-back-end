@@ -16,29 +16,12 @@ enum Status {
     AlREADY_READ
 }
 
-model AuthorsOnBooks {
-    book    Book    @relation(fields: [bookId], references: [id])
-    bookId  Int
-    author  Author  @relation(fields: [authorId], references: [id])
-    authorId    Int
-
-    @@id([bookId, authorId])
-}
-
-model Author {
-    id Int      @id @default(autoincrement())
-    name String
-    image String
-    books AuthorsOnBooks[]
-}
-
 model Book {
   id        Int      @id @default(autoincrement())
   title     String
   score     Int?
   status    Status
   image     String?
-  authorId  Int
-  authors   AuthorsOnBooks[]
+  author   String
   concludedAt DateTime
 }
