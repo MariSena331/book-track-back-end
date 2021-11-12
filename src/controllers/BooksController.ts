@@ -15,6 +15,19 @@ export const BooksController = {
         })
         return response.json(result)
     },
+
+    async updateStatus(request: any, response: Response): Promise<any> {
+        const { bookId, newStatus } = request.body
+      const result = await prisma.book.update({
+          where: {
+              id: bookId
+          },
+          data: {
+              status: newStatus
+          }
+      })
+        return response.json(result)
+    },
     
     async getAll(request: any, response: Response): Promise<any> {
         const result = await prisma.book.findMany()
