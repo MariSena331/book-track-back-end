@@ -2,4 +2,9 @@ import express from 'express'
 
 const app = express()
 
-app.listen(3333, "Server is running!")
+try {
+ app.listen(3333)
+ console.log("Server is running at port 3333!")
+} catch (err) {
+ console.log(err)
+}
