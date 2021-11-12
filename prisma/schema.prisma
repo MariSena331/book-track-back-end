@@ -40,5 +40,5 @@ model Book {
   image     String?
   authorId  Int
   authors   AuthorsOnBooks[]
-  concludedAt Date
+  concludedAt DateTime
 }
