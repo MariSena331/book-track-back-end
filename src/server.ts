@@ -5,8 +5,10 @@ import { router } from './routes'
 
 const app = express()
 const jsonParser = bodyParser.json()
+const cors = require('cors')
 
 try {
+    app.use(cors)
     app.use(jsonParser)
     app.use(router)
  
