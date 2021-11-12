@@ -1,10 +1,17 @@
-import express from 'express'
+import { prisma } from './main'
+import express, { RequestHandler } from 'express'
+import bodyParser from 'body-parser'
+import { router } from './routes'
 
 const app = express()
+const jsonParser = bodyParser.json()
 
 try {
- app.listen(3333)
- console.log("Server is running at port 3333!")
+    app.use(jsonParser)
+    app.use(router)
+ 
+    app.listen(3333)
+    console.log("Server is running at port 3333!")
 } catch (err) {
  console.log(err)
 }
