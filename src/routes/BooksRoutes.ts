@@ -12,4 +12,8 @@ booksRoutes.get("/", (request: Request, response: Response) => {
     return BooksController.getAll(request, response)
 })
 
+booksRoutes.delete("/", (request: Request, response: Response) => {
+    return BooksController.remove(request, response)
+})
+
 export { booksRoutes }

@@ -20,5 +20,18 @@ export const BooksController = {
         const result = await prisma.book.findMany()
 
         return response.json(result)
-    }
+    },
+
+    async remove(request: any, response: Response): Promise<any> {
+        const { bookId } = request.body
+
+        if(bookId) {
+            const result = await prisma.book.delete({
+                where: {
+                    id: bookId,
+                },
+            })
+        return response.json("Book removed with success!")
+        } else return response.json("Oops.. Something happened :( ! Try later!")
+    },
 }
